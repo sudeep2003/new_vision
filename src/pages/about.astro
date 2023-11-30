@@ -1,0 +1,69 @@
+---
+import "../styles/global.css"
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = 'About Me'
+
+const identity = {
+    firstName: 'Sudeep',
+    country: 'India',
+    occupation: 'Student',
+    hobbies: ['Coding', 'Gaming', 'Reading'],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express.js", "MongoDB", "Python", "C++", "Java"]
+
+const happy = true;
+const finished = true;
+const goal = 3;
+
+const skillcolor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase"
+---
+
+<style define:vars={{skillcolor, fontWeight , textCase}}>
+    .skill{
+        color: var(--skillcolor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+    }
+</style>
+<BaseLayout pageTitle={pageTitle}>
+    <h4>Welcome to My website!</h4>
+    <p>I'm <span>{identity.firstName}</span>, and I'm thrilled to have you here. This space is where I share my passion for <spsn>Coding</spsn>.</p>
+
+    <p><span>A little about me:<span/>I live in {identity.country}.I work as a {identity.occupation}. I've always been fascinated by coding, and over the years, I've no achievements.</p>
+    {identity.hobbies.length >=2 &&
+    <p>Two of my hobbies are:  {identity.hobbies[0]} and {identity.hobbies[1]}</p>
+    }
+
+    <p>Here are some of the skills I have:</p>
+    <ul>
+        {skills.map((skill)=>(
+            <li class="skill">{skill}</li>
+        ))}
+    </ul>
+
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I have finished learning Astro!</p>}
+    {goal === 3 ? <p>I have reached my goal!</p> : <p>I have not reached my goal yet.</p>}
+
+    <p>But this website isn't just about me – it's about building a community of developer and designers. Whether you're a fellow developer enthusiast or simply curious about coding, you're in the right place. Here, we [briefly describe what visitors can expect from your website, such as educational content, inspiration, product reviews, etc.].</p>
+            
+    <!-- <h4>What you'll find on [Your Name or Website]:</h4>
+        <ul>
+            - [List key content or topics you cover]
+            - [Highlight any unique features or offerings]
+            - [Mention any milestones or achievements]
+         </ul>   
+            Why [Your Name or Website]? Because I believe in [mention your core values, mission, or vision for your website]. I want to [mention the impact or value you aim to provide to your audience]. 
+            
+            So, whether you're here to learn, share, or simply explore, I hope [Your Name or Website] becomes a valuable resource for you. Please feel free to [mention how visitors can engage with your content or reach out to you].
+            
+            Thank you for being a part of this journey with me. I can't wait to connect with you and share our passion for [your niche] together.
+            
+            Warm regards,
+            [Your Name] -->
+</BaseLayout>
